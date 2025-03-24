@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Unauthorized</title>
+</head>
+<body>
+    <script>
+        fetch('/refresh', {
+            method: 'POST',
+            credentials: 'include'
+        })
+        .then(response => {
+            if (response.ok) {
+                window.location.reload();
+            } else {
+                window.location.href = '/auth';
+            }
+        })
+        .catch(() => window.location.href = '/auth');
+    </script>
+</body>
+</html>
